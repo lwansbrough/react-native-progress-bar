@@ -1,4 +1,4 @@
-# react-native-google-analytics
+# react-native-progress-bar
 
 An animated progress bar for React Native.
 
