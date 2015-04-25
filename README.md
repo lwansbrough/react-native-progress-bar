@@ -86,6 +86,14 @@ AppRegistry.registerComponent('rnsandbox', () => rnsandbox);
 
 The progress value for the progress bar. Ranges from `0..1`.
 
+#### `easing`
+
+The easing function which is applied to the animation. Can be custom or one of the functions on the `ProgressBar.easingTypes` object.
+
+#### `easingDuration`
+
+The time taken to complete the animation.
+
 #### `fillStyle`
 
 The style for the progress bar fill.
