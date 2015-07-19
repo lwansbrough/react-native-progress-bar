@@ -4,12 +4,12 @@
     "type": "git",
     "url": "https://github.com/lwansbrough/react-native-progress-bar.git"
   },
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An animated progress bar component for React Native",
   "main": "index.js",
   "author": "Lochlan Wansbrough <lochie@live.com> (http://lwansbrough.com)",
   "peerDependencies": {
-    "react-native": ">=0.4.0"
+    "react-native": "*"
   },
   "keywords": [
     "react",
