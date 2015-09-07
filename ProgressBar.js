@@ -23,7 +23,7 @@ var ProgressBar = React.createClass({
 
   getDefaultProps() {
     return {
-      style: styles,
+      style: {width: 20},
       easing: Easing.inOut(Easing.ease),
       easingDuration: 500
     };
@@ -42,11 +42,12 @@ var ProgressBar = React.createClass({
   },
 
   render() {
-
-    var fillWidth = this.state.progress.interpolate({
-      inputRange: [0, 1],
-      outputRange: [0 * this.props.style.width, 1 * this.props.style.width],
+    var i = this.state.progress.interpolate({
+      inputRange: [0.0, 1.0],
+      outputRange: [0.0, 1.0 * this.props.style.width],
     });
+
+    var fillWidth = i._interpolation(1.0 * this.props.progress)
 
     return (
       <View style={[styles.background, this.props.backgroundStyle, this.props.style]}>
