@@ -64,7 +64,7 @@ var ProgressBar = React.createClass({
     );
   },
 
-  animate(progress) {
+  animate() {
     Animated.timing(this.state.progress, {
       easing: this.props.easing,
       duration: this.props.easingDuration,
