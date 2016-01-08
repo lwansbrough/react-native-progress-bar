@@ -8,9 +8,6 @@
   "description": "An animated progress bar component for React Native",
   "main": "index.js",
   "author": "Lochlan Wansbrough <lochie@live.com> (http://lwansbrough.com)",
-  "peerDependencies": {
-    "react-native": "*"
-  },
   "keywords": [
     "react",
     "native",
