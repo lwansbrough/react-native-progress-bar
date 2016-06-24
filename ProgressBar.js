@@ -1,11 +1,12 @@
-var React = require('react-native');
+var React = require('react');
+var ReactNative = require('react-native');
 
 var {
   Animated,
   Easing,
   StyleSheet,
   View
-} = React;
+} = ReactNative;
 
 var styles = StyleSheet.create({
   background: {
