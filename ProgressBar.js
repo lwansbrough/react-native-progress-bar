@@ -34,7 +34,9 @@ var ProgressBar = React.createClass({
       progress: new Animated.Value(this.props.initialProgress || 0)
     };
   },
-
+  componentDidMount(){
+    this.update();
+  },
   componentDidUpdate(prevProps, prevState) {
     if (this.props.progress >= 0 && this.props.progress != prevProps.progress) {
       this.update();
