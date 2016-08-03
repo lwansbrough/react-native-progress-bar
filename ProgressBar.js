@@ -1,4 +1,7 @@
-import React from 'react';
+import React, {
+    Component
+} from 'react';
+
 import {
     StyleSheet,
     Text,
@@ -19,27 +22,23 @@ var styles = StyleSheet.create({
   }
 });
 
-var ProgressBar = React.createClass({
+class ProgressBar extends Component {
 
-  getDefaultProps() {
-    return {
-      style: styles,
-      easing: Easing.inOut(Easing.ease),
-      easingDuration: 500
-    };
-  },
+  defaultProps = {
+    style: styles,
+    easing: Easing.inOut(Easing.ease),
+    easingDuration: 500
+  }
 
-  getInitialState() {
-    return {
-      progress: new Animated.Value(this.props.initialProgress || 0)
-    };
-  },
+  state = {
+    progress: new Animated.Value(this.props.initialProgress || 0)
+  }
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.progress >= 0 && this.props.progress != prevProps.progress) {
       this.update();
     }
-  },
+  }
 
   render() {
 
@@ -53,7 +52,7 @@ var ProgressBar = React.createClass({
         <Animated.View style={[styles.fill, this.props.fillStyle, { width: fillWidth }]}/>
       </View>
     );
-  },
+  }
 
   update() {
     Animated.timing(this.state.progress, {
@@ -62,6 +61,6 @@ var ProgressBar = React.createClass({
       toValue: this.props.progress
     }).start();
   }
-});
+}
 
 module.exports = ProgressBar;
