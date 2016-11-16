@@ -31,7 +31,8 @@ var ProgressBar = React.createClass({
 
   getInitialState() {
     return {
-      progress: new Animated.Value(this.props.initialProgress || 0)
+      progress: new Animated.Value(this.props.initialProgress || 0),
+      calculatedWidth: 0
     };
   },
 
@@ -45,11 +46,17 @@ var ProgressBar = React.createClass({
 
     var fillWidth = this.state.progress.interpolate({
       inputRange: [0, 1],
-      outputRange: [0 * this.props.style.width, 1 * this.props.style.width],
+      outputRange: [0 * (this.props.style.width || this.state.calculatedWidth ),
+          1 * (this.props.style.width || this.state.calculatedWidth)]
     });
 
     return (
-      <View style={[styles.background, this.props.backgroundStyle, this.props.style]}>
+      <View style={[styles.background, this.props.backgroundStyle, this.props.style]}
+            onLayout={(event) => {
+               if (!this.props.style.width) {
+                    this.setState({calculatedWidth: event.nativeEvent.layout.width})
+                    }
+                }}>
         <Animated.View style={[styles.fill, this.props.fillStyle, { width: fillWidth }]}/>
       </View>
     );
