@@ -23,7 +23,7 @@ var ProgressBar = React.createClass({
 
   getDefaultProps() {
     return {
-      style: styles,
+      style: {},
       easing: Easing.inOut(Easing.ease),
       easingDuration: 500
     };
