@@ -31,7 +31,7 @@ var ProgressBar = React.createClass({
 
   getInitialState() {
     return {
-      progress: new Animated.Value(this.props.initialProgress || 0)
+      progress: new Animated.Value(this.props.progress || 0)
     };
   },
 
