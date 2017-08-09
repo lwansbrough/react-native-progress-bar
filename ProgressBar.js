@@ -25,13 +25,16 @@ var ProgressBar = React.createClass({
     return {
       style: styles,
       easing: Easing.inOut(Easing.ease),
-      easingDuration: 500
+      easingDuration: 850,
+      updateInterval: 1000,
+      updateRatio: .15
     };
   },
 
   getInitialState() {
     return {
-      progress: new Animated.Value(this.props.initialProgress || 0)
+      progress: new Animated.Value(this.props.initialProgress || 0),
+      calculatedWidth: 0
     };
   },
 
@@ -41,25 +44,56 @@ var ProgressBar = React.createClass({
     }
   },
 
+  componentWillUnmount(){
+    this.clearIntt();
+  },
+  clearIntt(){
+    if(this._interval) clearInterval(this._interval);
+  },
+  start() {
+    this.clearIntt();
+    this._interval = setInterval((()=>{
+      console.log('PROG BAR: ' + JSON.stringify(this.state));
+      var val = JSON.stringify(this.state.progress)*1;
+      console.log('PROG BAR IS: ' + val);
+      var to = val + ((1-val)*this.props.updateRatio);
+      if(to>.99)
+        to = .99;
+      console.log('UPDATE PROG BAR TO: ' + to);
+      this.update(to);
+    }).bind(this),this.props.updateInterval)
+  },
+
+  end() {
+    this.clearIntt();
+    this.update(1);    
+  },
+
   render() {
 
     var fillWidth = this.state.progress.interpolate({
       inputRange: [0, 1],
-      outputRange: [0 * this.props.style.width, 1 * this.props.style.width],
+      outputRange: [0 * (this.props.style.width || this.state.calculatedWidth ),
+          1 * (this.props.style.width || this.state.calculatedWidth)]
     });
 
     return (
-      <View style={[styles.background, this.props.backgroundStyle, this.props.style]}>
+      <View style={[styles.background, this.props.backgroundStyle, this.props.style]}
+            onLayout={(event) => {
+               if (!this.props.style.width) {
+                    this.setState({calculatedWidth: event.nativeEvent.layout.width})
+                    }
+                }}>
         <Animated.View style={[styles.fill, this.props.fillStyle, { width: fillWidth }]}/>
       </View>
     );
   },
 
-  update() {
+  update(prog) {
     Animated.timing(this.state.progress, {
       easing: this.props.easing,
       duration: this.props.easingDuration,
-      toValue: this.props.progress
+      toValue: prog ? prog  : this.props.progress
     }).start();
   }
 });
