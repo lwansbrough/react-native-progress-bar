@@ -25,7 +25,9 @@ var ProgressBar = React.createClass({
     return {
       style: styles,
       easing: Easing.inOut(Easing.ease),
-      easingDuration: 500
+      easingDuration: 850,
+      updateInterval: 1000,
+      updateRatio: .15
     };
   },
 
@@ -40,6 +42,31 @@ var ProgressBar = React.createClass({
     if (this.props.progress >= 0 && this.props.progress != prevProps.progress) {
       this.update();
     }
+  },
+
+  componentWillUnmount(){
+    this.clearIntt();
+  },
+  clearIntt(){
+    if(this._interval) clearInterval(this._interval);
+  },
+  start() {
+    this.clearIntt();
+    this._interval = setInterval((()=>{
+      console.log('PROG BAR: ' + JSON.stringify(this.state));
+      var val = JSON.stringify(this.state.progress)*1;
+      console.log('PROG BAR IS: ' + val);
+      var to = val + ((1-val)*this.props.updateRatio);
+      if(to>.99)
+        to = .99;
+      console.log('UPDATE PROG BAR TO: ' + to);
+      this.update(to);
+    }).bind(this),this.props.updateInterval)
+  },
+
+  end() {
+    this.clearIntt();
+    this.update(1);    
   },
 
   render() {
@@ -62,11 +89,11 @@ var ProgressBar = React.createClass({
     );
   },
 
-  update() {
+  update(prog) {
     Animated.timing(this.state.progress, {
       easing: this.props.easing,
       duration: this.props.easingDuration,
-      toValue: this.props.progress
+      toValue: prog ? prog  : this.props.progress
     }).start();
   }
 });
