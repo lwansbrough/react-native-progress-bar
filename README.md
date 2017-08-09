@@ -100,11 +100,11 @@ var rnsandbox = React.createClass({
     return (
       <View style={styles.container}>
        <Button
-        onPress={()=>{this.progbar.start()}}
-        title="Start Progress Bar"/>
+          onPress={()=>{this.progbar.start()}}
+          title="Start Progress Bar"/>
         <Button style={{margin:20}}
-        onPress={()=>{this.progbar.end()}}
-        title="Done!"/>
+          onPress={()=>{this.progbar.end()}}
+          title="Done!"/>
         <ProgressBar
           fillStyle={{}}
           backgroundStyle={{backgroundColor: '#cccccc', borderRadius: 2}}
@@ -147,5 +147,5 @@ AppRegistry.registerComponent('rnsandbox', () => rnsandbox);
 | Method | Description |
 |---|---|
 | **`update(progress)`** | The recommended way to update the progress of the progress bar is to use the `progress` property. If you prefer, you can use this `update` method to update the progress directly. To access this method, set the `ref` property on the `<ProgressBar>` and call `this.refs.progressBarName.update(0.3)` |
-| **`start()`** | To start the progressbar in infinite method. It updates every **`updateInterval`** (default: 1000) milliseconds some amount in percentage (set on prop `updateRatio`), so that it never actually finishes. Nice for when you don't know how much time it's going to take. It locks on `.99` so it never ends. When you want to finish it call `end()` and it sets itself to `1` |
+| **`start()`** | To start the progressbar in infinite method. It updates every `updateInterval` (default: 1000) milliseconds some amount in percentage (set on prop `updateRatio`), so that it never actually finishes. Nice for when you don't know how much time it's going to take. It locks on `.99` so it never ends. When you want to finish it call `end()` and it sets itself to `1` |
 | **`end()`** | Sets value to `1` and clears interval |
