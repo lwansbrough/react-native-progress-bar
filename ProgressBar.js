@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
 });
 
 class ProgressBar extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       progress: new Animated.Value(this.props.initialProgress || 0),
       calculatedWidth: 0,
