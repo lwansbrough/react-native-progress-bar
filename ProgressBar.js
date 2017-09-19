@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-    StyleSheet,
-    View,
-    Animated,
-    Easing,
+  Animated,
+  Easing,
+  StyleSheet,
+  View,
 } from 'react-native';
 
 const styles = StyleSheet.create({
