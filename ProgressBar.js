@@ -14,6 +14,12 @@ const styles = StyleSheet.create({
 })
 
 export default class ProgressBar extends React.Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			progress: 0
+		}
+	}
 	getDefaultProps() {
 		return {
 			style: styles,
