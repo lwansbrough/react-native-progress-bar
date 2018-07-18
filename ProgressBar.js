@@ -13,12 +13,6 @@ const styles = StyleSheet.create({
 	}
 })
 
-ProgressBar.defaultProps = {
-	style: styles,
-	easing: Easing.inOut(Easing.ease),
-	easingDuration: 500
-}
-
 export default class ProgressBar extends React.Component {
 	constructor(props) {
 		super(props)
@@ -53,4 +47,10 @@ export default class ProgressBar extends React.Component {
 			toValue: this.props.progress
 		}).start()
 	}
+}
+
+ProgressBar.defaultProps = {
+	style: styles,
+	easing: Easing.inOut(Easing.ease),
+	easingDuration: 500
 }
