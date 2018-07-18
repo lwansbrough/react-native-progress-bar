@@ -16,5 +16,13 @@
     "bar",
     "load",
     "loading"
-  ]
+  ],
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-babel": "^5.0.0",
+    "eslint-plugin-flowtype": "^2.46.1",
+    "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-react-native": "^3.2.1",
+    "eslint-plugin-react-native-globals": "^0.1.2"
+  }
 }
