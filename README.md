@@ -1,12 +1,17 @@
 # react-native-progress-bar
 
-An animated progress bar for React Native.
+An animated progress bar for React Native. This is an updated fork of ![](https://github.com/lwansbrough/react-native-progress-bar/)
 
 ![](https://i.imgur.com/EGufppz.gif)
 
 ## Getting started
 
-1. `npm install react-native-progress-bar@latest --save`
+`npm install mattslight/react-native-progress-bar`
+
+or
+
+`npm install git+https://github.com/mattslight/react-native-progress-bar`
+
 
 ## Example usage
 
