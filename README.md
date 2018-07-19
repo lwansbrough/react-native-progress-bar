@@ -1,6 +1,6 @@
 # react-native-progress-bar
 
-An animated progress bar for React Native. This is an updated fork of ![](https://github.com/lwansbrough/react-native-progress-bar/)
+An animated progress bar for React Native. This is an updated fork of https://github.com/lwansbrough/react-native-progress-bar/ working on React 16
 
 ![](https://i.imgur.com/EGufppz.gif)
 
