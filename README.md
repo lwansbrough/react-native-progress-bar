@@ -70,7 +70,6 @@ AppRegistry.registerComponent('MyComponentWithProgress', () => MyComponentWithPr
 |**`backgroundStyle `**|The style for the progress bar's background.|None|
 |**`style `**|The style for the entire component. This doesn't really differ from the `backgroundStyle` property. You must set width either here or in `backgroundStyle` in order to make sure the component works properly.|See [`ProgressBar.js`](https://github.com/lwansbrough/react-native-progress-bar/blob/master/ProgressBar.js)|
 
-
 ## Component methods
 | Method | Description |
 |---|---|
