@@ -1,83 +1,62 @@
 # react-native-progress-bar
 
-An animated progress bar for React Native.
+An animated progress bar for React Native. This is an updated fork of https://github.com/lwansbrough/react-native-progress-bar/ working on React 16
 
 ![](https://i.imgur.com/EGufppz.gif)
 
 ## Getting started
 
-1. `npm install react-native-progress-bar@latest --save`
+`npm install mattslight/react-native-progress-bar`
+
+or
+
+`npm install git+https://github.com/mattslight/react-native-progress-bar`
+
 
 ## Example usage
 
 ```javascript
-var React = require('react-native');
-var {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-} = React;
-var ProgressBar = require('react-native-progress-bar');
+import React from 'react'
+import { Dimensions } from 'react-native'
+import ProgressBar from 'react-native-progress-bar'
 
-var rnsandbox = React.createClass({
+export class MyComponentWithProgress extends React.Component {
+	constructor(props) {
+		super()
+		this.state = {
+			progress: 0
+		}
+	}
 
-  getInitialState() {
-    return {
-      progress: 0
-    };
-  },
+	render() {
+  
+		// ...
+		// example function controlling state
 
-  render() {
+		setTimeout(() => {
+			this.setState({ progress: this.state.progress + 0.4 * Math.random() }).bind(this)
+		}, 1000)
 
-    setTimeout((function() {
-      this.setState({ progress: this.state.progress + (0.4 * Math.random())});
-    }).bind(this), 1000);
+		// ...
 
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+Control+Z for dev menu
-        </Text>
-        <ProgressBar
-          fillStyle={{}}
-          backgroundStyle={{backgroundColor: '#cccccc', borderRadius: 2}}
-          style={{marginTop: 10, width: 300}}
-          progress={this.state.progress}
-        />
-      </View>
-    );
-  }
-});
+		return (
+    
+			// ...
 
-var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+			<ProgressBar
+				fillStyle={{}}
+				backgroundStyle={{ backgroundColor: '#cccccc', borderRadius: 2 }}
+				style={{ width: Dimensions.get('window').width - 20 }}
+				progress={this.state.progress}
+			/>
 
-AppRegistry.registerComponent('rnsandbox', () => rnsandbox);
+			// ...
+      
+		)
+	}
+}
 
+AppRegistry.registerComponent('MyComponentWithProgress', () => MyComponentWithProgress);
 ```
 
 ## Properties
